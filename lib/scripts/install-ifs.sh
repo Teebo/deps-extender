@@ -2,15 +2,15 @@
 
 if ls ./node_modules | grep -w "$1"
 then
-  echo "${$1} is installed already"
+  echo "Extension source package is installed already"
   yarn extend-package-dependencies
 else
-  echo "${} is not installed , now installing..."
+  echo "Extension source package is not installed , now installing..."
   yarn add -D internal-frontend-scripts &
   pid=$!
-  echo "Waiting for process $1 id:${pid} to fni"
+  echo "Waiting for extension source package to finish installing (pid: ${pid})"
   wait $pid
-  echo DONE DONE DONE
+  echo "Done installing extension source package"
   yarn extend-package-dependencies
 fi
 
