@@ -49,8 +49,7 @@ const spawnScriptProcess = ({ scriptName, commonDepsSourcePackageName = null, is
 
     spawn.sync(
       'bash',
-      [path.join(__dirname, `../lib/scripts/${scriptName}.sh`)],
-      { stdio: 'inherit' }
+      [path.join(__dirname, `../lib/scripts/${scriptName}.sh`)]
     );
   }
 };
