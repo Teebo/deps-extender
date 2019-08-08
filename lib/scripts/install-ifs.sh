@@ -2,13 +2,13 @@
 
 if ls ./node_modules | grep -w "$1"
 then
-  echo "IFS IS INSTALLED"
+  echo "${$1} is installed already"
   yarn extend-package-dependencies
 else
-  echo "IFS NOT INSTALLED, INSTALLING..."
+  echo "${} is not installed , now installing..."
   yarn add -D internal-frontend-scripts &
   pid=$!
-  echo "THEHEHE ${pid}"
+  echo "Waiting for process $1 id:${pid} to fni"
   wait $pid
   echo DONE DONE DONE
   yarn extend-package-dependencies
