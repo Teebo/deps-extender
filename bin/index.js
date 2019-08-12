@@ -47,8 +47,7 @@ const spawnScriptProcess = ({ scriptName, commonDepsSourcePackageName = null, is
       stringColor: 'magenta',
       stringStyle: 'underline'
     });
-    console.log('About to sparl teh bash script');
-    shell.exec(`bash ${path.join(__dirname, `../lib/scripts/${scriptName}.sh`)}`);
+    shell.exec(`bash ${path.join(__dirname, `../lib/scripts/${scriptName}.sh  ${commonDepsSourcePackageName}`)}`);
     // spawn.sync(
     //   'bash',
     //   [path.join(__dirname, `../lib/scripts/${scriptName}.sh`)]
@@ -60,15 +59,13 @@ const processScriptName = process.argv[2];
 
 switch(processScriptName) {
   case scriptNames.preInstall:
-    console.log(process.argv);
     spawnScriptProcess({ scriptName: processScriptName, commonDepsSourcePackageName: process.argv[3] });
     break;
   case scriptNames.postInstall:
     spawnScriptProcess({ scriptName: processScriptName });
     break;
   case scriptNames.installIFS:
-    console.log(process.argv, scriptNames.installIFS);
-    spawnScriptProcess({ scriptName: processScriptName, isShellScript: true });
+    spawnScriptProcess({ scriptName: processScriptName, isShellScript: true, commonDepsSourcePackageName:  process.argv[3]});
     break;
   case scriptNames.extendDependencies:
     spawnScriptProcess({ scriptName: processScriptName, commonDepsSourcePackageName: process.argv[3] });
