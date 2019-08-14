@@ -47,6 +47,7 @@ const spawnScriptProcess = ({ scriptName, commonDepsSourcePackageName = null, is
       stringColor: 'magenta',
       stringStyle: 'underline'
     });
+
     shell.exec(`bash ${path.join(__dirname, `../lib/scripts/${scriptName}.sh  ${commonDepsSourcePackageName}`)}`);
     // spawn.sync(
     //   'bash',
